@@ -1,19 +1,29 @@
 ---
-name: frontend-slides
-description: Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.
+name: html-content-board
+description: Create responsive, visually structured HTML content experiences from transcripts, PDFs, PowerPoint files, documents, images, notes, and research. Use for transcript boards, tutorials, training materials, reports, knowledge pages, customer cases, workflow guides, and long-form visual content.
 ---
 
-# Frontend Slides
+# HTML Content Board
 
-Create zero-dependency, animation-rich HTML presentations that run entirely in the browser.
+Create polished, responsive HTML content experiences that combine structured text, visuals, navigation, and source materials in the browser.
 
 ## Core Principles
 
-1. **Zero Dependencies** — Single HTML files with inline CSS/JS. No npm, no build tools.
-2. **Show, Don't Tell** — Generate visual previews, not abstract choices. People discover what they want by seeing it.
-3. **Distinctive Design** — No generic "AI slop." Every presentation must feel custom-crafted.
-4. **Progressive Disclosure** — Read lightweight style indexes first. For bold templates, use small preview cards for style previews and load the full `design.md` only after the user picks that template.
-5. **Fixed 16:9 Stage (NON-NEGOTIABLE)** — Every deck uses a 1920×1080 slide canvas scaled as a whole to the viewport. Slides must stay 16:9 on every screen, including phones. Do not reflow slide content to fit the device.
+1. **Zero-Build First** — Prefer self-contained HTML/CSS/JS. Avoid unnecessary frameworks, package managers, and build tools.
+
+2. **Show, Don't Tell** — When visual direction matters, generate visual previews instead of asking users to describe abstract design preferences.
+
+3. **Distinctive but Readable** — Avoid generic AI-generated design. Every page should feel intentionally designed for its content while maintaining excellent readability.
+
+4. **Progressive Disclosure** — Read only the style rules, templates, components, and supporting files needed for the current task. Do not load every template or design reference at once.
+
+5. **Responsive Reading Experience (NON-NEGOTIABLE)** — Every HTML page must adapt naturally across desktop, tablet, and mobile. Content must reflow responsively rather than scale as a fixed canvas.
+
+6. **Content and Visuals Are Designed Together** — Do not build a text-only page first and add images later. Screenshots, slides, diagrams, photos, and text should shape the information architecture together.
+
+7. **Source Fidelity** — Never invent facts, links, quotations, timestamps, or source material that are not supported by the provided content.
+
+8. **Visual QA Is Mandatory** — Always render and inspect the final HTML before delivery. Check responsive layout, overflow, broken images, navigation, links, typography, and visual hierarchy.
 
 ## Design Aesthetics
 
