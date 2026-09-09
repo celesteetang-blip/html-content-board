@@ -1,350 +1,204 @@
-# HTML Presentation Template
+# HTML Content Board — Base Template
 
-Reference architecture for generating slide presentations. Every presentation follows a fixed 16:9 stage model: slides are authored at 1920×1080 and the whole stage scales to fit the browser window.
-
-## Base HTML Structure
+Use this as an architectural reference. Adapt structure and visual styling to the task; do not mechanically copy every section.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentation Title</title>
-
-    <!-- Fonts: use Fontshare or Google Fonts — never system fonts -->
-    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=...">
-
-    <style>
-        /* ===========================================
-           CSS CUSTOM PROPERTIES (THEME)
-           Change these to change the whole look
-           =========================================== */
-        :root {
-            /* Colors — from chosen style preset */
-            --bg-primary: #0a0f1c;
-            --bg-secondary: #111827;
-            --text-primary: #ffffff;
-            --text-secondary: #9ca3af;
-            --accent: #00ffcc;
-            --accent-glow: rgba(0, 255, 204, 0.3);
-
-            /* Typography — authored at 1920×1080 stage size */
-            --font-display: 'Clash Display', sans-serif;
-            --font-body: 'Satoshi', sans-serif;
-            --title-size: 112px;
-            --subtitle-size: 34px;
-            --body-size: 28px;
-
-            /* Spacing — authored at 1920×1080 stage size */
-            --slide-padding: 72px;
-            --content-gap: 32px;
-
-            /* Animation */
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --duration-normal: 0.6s;
-        }
-
-        /* ===========================================
-           BASE STYLES
-           =========================================== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* --- PASTE viewport-base.css CONTENTS HERE --- */
-
-        /* ===========================================
-           ANIMATIONS
-           Trigger via .visible class on the active slide
-           =========================================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity var(--duration-normal) var(--ease-out-expo),
-                        transform var(--duration-normal) var(--ease-out-expo);
-        }
-
-        .slide.visible .reveal {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Stagger children for sequential reveal */
-        .reveal:nth-child(1) { transition-delay: 0.1s; }
-        .reveal:nth-child(2) { transition-delay: 0.2s; }
-        .reveal:nth-child(3) { transition-delay: 0.3s; }
-        .reveal:nth-child(4) { transition-delay: 0.4s; }
-
-        /* ... preset-specific styles ... */
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Content Board</title>
+  <style>
+    /* Start from responsive-base.css, then add task-specific styling. */
+  </style>
 </head>
 <body>
-    <div class="deck-viewport">
-        <main class="deck-stage" id="deckStage">
-            <section class="slide title-slide active">
-                <h1 class="reveal">Presentation Title</h1>
-                <p class="reveal">Subtitle or author</p>
-            </section>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-            <section class="slide">
-                <div class="slide-content">
-                    <h2 class="reveal">Slide Title</h2>
-                    <p class="reveal">Content...</p>
-                </div>
-            </section>
-
-            <!-- More slides... -->
-        </main>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-block">
+        <p class="eyebrow">Context / category</p>
+        <h1>Page title</h1>
+        <p class="lede">A concise source-faithful summary.</p>
+      </div>
     </div>
+  </header>
 
-    <script>
-        /* ===========================================
-           SLIDE PRESENTATION CONTROLLER
-           =========================================== */
-        class SlidePresentation {
-            constructor() {
-                this.slides = document.querySelectorAll('.slide');
-                this.currentSlide = 0;
-                this.stage = document.getElementById('deckStage');
-                this.setupStageScale();
-                this.setupKeyboardNav();
-                this.setupTouchNav();
-                this.showSlide(0);
-            }
+  <nav class="toc" aria-label="Table of contents">
+    <div class="container toc-inner">
+      <a href="#overview">Overview</a>
+      <a href="#chapter-1">Chapter 1</a>
+      <a href="#chapter-2">Chapter 2</a>
+    </div>
+  </nav>
 
-            setupStageScale() {
-                const scale = () => {
-                    const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-                    const x = (window.innerWidth - 1920 * factor) / 2;
-                    const y = (window.innerHeight - 1080 * factor) / 2;
-                    this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
-                };
-                scale();
-                window.addEventListener('resize', scale);
-            }
+  <main id="main-content">
+    <section id="overview" class="section">
+      <div class="container reading-width">
+        <h2>Overview</h2>
+        <div class="summary-grid">
+          <article class="summary-item">
+            <h3>Key takeaway</h3>
+            <p>Supported summary text.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            setupKeyboardNav() {
-                // Arrow keys, Space, Page Up/Down
-            }
+    <section id="chapter-1" class="section section-alt">
+      <div class="container">
+        <header class="section-heading reading-width">
+          <p class="eyebrow">Chapter 01</p>
+          <h2>Chapter heading</h2>
+          <p>Short context paragraph.</p>
+        </header>
 
-            setupTouchNav() {
-                // Touch/swipe support for mobile
-            }
+        <div class="media-text">
+          <figure class="media-panel">
+            <img src="assets/images/example.png" alt="Describe what the source visual shows" />
+            <figcaption>Source-aware caption when useful.</figcaption>
+          </figure>
 
-            showSlide(index) {
-                this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
-                this.slides.forEach((slide, i) => {
-                    slide.classList.toggle('active', i === this.currentSlide);
-                    slide.classList.toggle('visible', i === this.currentSlide);
-                });
-            }
-        }
+          <article class="reading-width prose">
+            <h3>Subtopic</h3>
+            <p>Body text...</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        new SlidePresentation();
-    </script>
+    <section id="chapter-2" class="section">
+      <div class="container reading-width prose">
+        <h2>Another chapter</h2>
+
+        <aside class="callout" aria-label="Key insight">
+          <strong>Key insight</strong>
+          <p>Use callouts only when they improve scanning or emphasis.</p>
+        </aside>
+
+        <div class="table-scroll" role="region" aria-label="Comparison table" tabindex="0">
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Details</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>A</td><td>Example</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container reading-width">
+      <p>Sources, notes, or further reading when provided.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Add only useful interactions: TOC state, disclosure controls, copy buttons, etc.
+    // Keep the page fully readable if non-essential JavaScript fails.
+  </script>
 </body>
 </html>
 ```
 
-## Required JavaScript Features
+# Architecture Rules
 
-Every presentation must include:
+## Container strategy
 
-1. **SlidePresentation Class** — Main controller with:
-   - Keyboard navigation (arrows, space, page up/down)
-   - Touch/swipe support
-   - Mouse wheel navigation
-   - Optional progress indicator or page count, kept outside the slide stage
+Use at least two conceptual widths:
 
-2. **Stage Scaling** — For fixed 16:9 presentation behavior:
-   - Keep all slides at 1920×1080 inside `.deck-stage`
-   - Scale the whole stage with one transform
-   - Letterbox/pillarbox as needed; never reflow slide content per device
+- **Reading width** for paragraphs and long-form copy
+- **Content/media width** for screenshots, diagrams, tables, galleries, and comparisons
 
-3. **Optional Enhancements** (match to chosen style):
-   - Custom cursor with trail
-   - Particle system background (canvas)
-   - Parallax effects
-   - 3D tilt on hover
-   - Magnetic buttons
-   - Counter animations
+Do not force everything into one narrow column or one full-width canvas.
 
-4. **Inline Editing** (included by default after draft generation):
-   - Edit toggle button (hidden by default, revealed via hover hotzone or `E` key)
-   - Auto-save to localStorage
-   - Export/save file functionality
-   - See "Inline Editing Implementation" section below
+## Section IDs
 
-## Inline Editing Implementation
+- Use stable, meaningful IDs such as `overview`, `workflow`, `qa-release`, or `chapter-03`.
+- Anchor links must point to real IDs.
+- Apply `scroll-margin-top` so sticky navigation does not cover headings.
 
-Inline editing is a lightweight post-draft affordance. Do not ask the user whether they want it during the pre-generation Q&A. Include it by default unless the user explicitly asks for a locked/export-only presentation or no editing controls.
+## Progressive enhancement
 
-**Do NOT use CSS `~` sibling selector for hover-based show/hide.** The CSS-only approach (`edit-hotzone:hover ~ .edit-toggle`) fails because `pointer-events: none` on the toggle button breaks the hover chain: user hovers hotzone -> button becomes visible -> mouse moves toward button -> leaves hotzone -> button disappears before click.
+The page should remain understandable without complex JavaScript. JavaScript may enhance:
 
-**Required approach: JS-based hover with 400ms delay timeout.**
+- Active table-of-contents state
+- Collapsible secondary details
+- Copy buttons
+- Lightbox or image expansion
+- Search/filter for large reference pages
 
-HTML:
-```html
-<div class="edit-hotzone"></div>
-<button class="edit-toggle" id="editToggle" title="Edit mode (E)">✏️</button>
-```
+Do not make the core content dependent on a heavy JS runtime.
 
-CSS (visibility controlled by JS classes only):
-```css
-/* Do NOT use CSS ~ sibling selector for this!
-   pointer-events: none breaks the hover chain.
-   Must use JS with delay timeout. */
-.edit-hotzone {
-    position: fixed; top: 0; left: 0;
-    width: 80px; height: 80px;
-    z-index: 10000;
-    cursor: pointer;
-}
-.edit-toggle {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 10001;
-}
-.edit-toggle.show,
-.edit-toggle.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-```
+# Common Content Patterns
 
-JS (three interaction methods):
-```javascript
-// 1. Click handler on the toggle button
-document.getElementById('editToggle').addEventListener('click', () => {
-    editor.toggleEditMode();
-});
-
-// 2. Hotzone hover with 400ms grace period
-const hotzone = document.querySelector('.edit-hotzone');
-const editToggle = document.getElementById('editToggle');
-let hideTimeout = null;
-
-hotzone.addEventListener('mouseenter', () => {
-    clearTimeout(hideTimeout);
-    editToggle.classList.add('show');
-});
-hotzone.addEventListener('mouseleave', () => {
-    hideTimeout = setTimeout(() => {
-        if (!editor.isActive) editToggle.classList.remove('show');
-    }, 400);
-});
-editToggle.addEventListener('mouseenter', () => {
-    clearTimeout(hideTimeout);
-});
-editToggle.addEventListener('mouseleave', () => {
-    hideTimeout = setTimeout(() => {
-        if (!editor.isActive) editToggle.classList.remove('show');
-    }, 400);
-});
-
-// 3. Hotzone direct click
-hotzone.addEventListener('click', () => {
-    editor.toggleEditMode();
-});
-
-// 4. Keyboard shortcut (E key, skip when editing text)
-document.addEventListener('keydown', (e) => {
-    if ((e.key === 'e' || e.key === 'E') && !e.target.getAttribute('contenteditable')) {
-        editor.toggleEditMode();
-    }
-});
-```
-
-## Image Pipeline (Skip If No Images)
-
-If user chose "No images" in Phase 1, skip this entirely. If images were provided, process them before generating HTML.
-
-**Dependency:** `pip install Pillow`
-
-### Image Processing
-
-```python
-from PIL import Image, ImageDraw
-
-# Circular crop (for logos on modern/clean styles)
-def crop_circle(input_path, output_path):
-    img = Image.open(input_path).convert('RGBA')
-    w, h = img.size
-    size = min(w, h)
-    left, top = (w - size) // 2, (h - size) // 2
-    img = img.crop((left, top, left + size, top + size))
-    mask = Image.new('L', (size, size), 0)
-    ImageDraw.Draw(mask).ellipse([0, 0, size, size], fill=255)
-    img.putalpha(mask)
-    img.save(output_path, 'PNG')
-
-# Resize (for oversized images that inflate HTML)
-def resize_max(input_path, output_path, max_dim=1200):
-    img = Image.open(input_path)
-    img.thumbnail((max_dim, max_dim), Image.LANCZOS)
-    img.save(output_path, quality=85)
-```
-
-| Situation | Operation |
-|-----------|-----------|
-| Square logo on rounded aesthetic | `crop_circle()` |
-| Image > 1MB | `resize_max(max_dim=1200)` |
-| Wrong aspect ratio | Manual crop with `img.crop()` |
-
-Save processed images with `_processed` suffix. Never overwrite originals.
-
-### Image Placement
-
-**Use direct file paths** (not base64) — presentations are viewed locally:
+## Transcript segment + visual
 
 ```html
-<img src="assets/logo_round.png" alt="Logo" class="slide-image logo">
-<img src="assets/screenshot.png" alt="Screenshot" class="slide-image screenshot">
+<section class="transcript-section" id="chapter-03">
+  <header class="section-heading">
+    <p class="timestamp">12:40–18:15</p>
+    <h2>Finding decision makers</h2>
+  </header>
+
+  <div class="media-text">
+    <figure class="media-panel">
+      <img src="assets/slides/slide-07.png" alt="Slide showing decision-maker research workflow" />
+      <figcaption>Related deck page</figcaption>
+    </figure>
+
+    <article class="transcript-copy prose">
+      <p>Lightly cleaned transcript...</p>
+    </article>
+  </div>
+</section>
 ```
 
-```css
-.slide-image {
-    max-width: 100%;
-    max-height: min(50vh, 400px);
-    object-fit: contain;
-    border-radius: 8px;
-}
-.slide-image.screenshot {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-.slide-image.logo {
-    max-height: min(30vh, 200px);
-}
+## Tutorial step
+
+```html
+<article class="step" id="step-03">
+  <div class="step-number" aria-hidden="true">03</div>
+  <div class="step-body">
+    <h3>Connect the source</h3>
+    <p>Explain the action and reason.</p>
+    <figure>
+      <img src="assets/images/step-03.png" alt="Screenshot showing the source connection screen" />
+    </figure>
+    <p class="success-check"><strong>Success check:</strong> The source appears in the connected list.</p>
+  </div>
+</article>
 ```
 
-**Adapt border/shadow colors to match the chosen style's accent.** Never repeat the same image on multiple slides (except logos on title + closing).
+## Source links
 
-**Placement patterns:** Logo centered on title slide. Screenshots in two-column layouts with text. Full-bleed images as slide backgrounds with text overlay (use sparingly).
-
----
-
-## Code Quality
-
-**Comments:** Every section needs clear comments explaining what it does and how to modify it.
-
-**Accessibility:**
-- Semantic HTML (`<section>`, `<nav>`, `<main>`)
-- Keyboard navigation works fully
-- ARIA labels where needed
-- `prefers-reduced-motion` support (included in viewport-base.css)
-
-## File Structure
-
-Single presentations:
-```
-presentation.html    # Self-contained, all CSS/JS inline
-assets/              # Images only, if any
+```html
+<ul class="source-links">
+  <li><a href="https://example.com">Descriptive source title</a></li>
+</ul>
 ```
 
-Multiple presentations in one project:
+Never fabricate missing URLs.
+
+# Packaging Guidance
+
+For a **single-file deliverable**, inline CSS and JS and embed only practical-size images.
+
+For an **asset-heavy board**, prefer:
+
+```text
+output/
+├── index.html
+└── assets/
+    ├── images/
+    ├── slides/
+    └── media/
 ```
-[name].html
-[name]-assets/
-```
+
+Keep paths relative so the project opens locally.
