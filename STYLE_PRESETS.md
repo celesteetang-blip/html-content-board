@@ -1,346 +1,169 @@
-# Style Presets Reference
+# HTML Content Board — Style Presets
 
-Curated visual styles for Frontend Slides. Each preset is inspired by real design references — no generic "AI slop" aesthetics. **Abstract shapes only — no illustrations.**
+Use these as starting systems, not rigid templates. The source material, audience, language, and user reference always take priority.
 
-**Viewport CSS:** For mandatory base styles, see [viewport-base.css](viewport-base.css). Include in every presentation.
+Do not force a style picker when the visual direction is already clear.
 
----
+## 1. Editorial Clean
 
-## Dark Themes
+**Best for:** training materials, customer cases, knowledge articles, long-form explainers, internal documentation.
 
-### 1. Bold Signal
+**Character:** calm, intelligent, contemporary, reading-first.
 
-**Vibe:** Confident, bold, modern, high-impact
+**Layout:**
+- Strong title and summary
+- Comfortable reading column
+- Optional sticky table of contents
+- Alternating full-width media and text sections
+- Sparse callouts
 
-**Layout:** Colored card on dark gradient. Number top-left, navigation top-right, title bottom-left.
+**Visual behavior:**
+- Light or warm-neutral background
+- Dark body text
+- One restrained accent color
+- Minimal shadows
+- Generous whitespace
+- Clear captions and source notes
 
-**Typography:**
-- Display: `Archivo Black` (900)
-- Body: `Space Grotesk` (400/500)
-
-**Colors:**
-```css
-:root {
-    --bg-primary: #1a1a1a;
-    --bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-    --card-bg: #FF5722;
-    --text-primary: #ffffff;
-    --text-on-card: #1a1a1a;
-}
-```
-
-**Signature Elements:**
-- Bold colored card as focal point (orange, coral, or vibrant accent)
-- Large section numbers (01, 02, etc.)
-- Navigation breadcrumbs with active/inactive opacity states
-- Grid-based layout for precise alignment
+**Avoid:** turning every paragraph into a card.
 
 ---
 
-### 2. Electric Studio
+## 2. Immersive Course
 
-**Vibe:** Bold, clean, professional, high contrast
+**Best for:** transcript boards, video tutorials, webinars, visual walkthroughs, course recaps.
 
-**Layout:** Split panel—white top, blue bottom. Brand marks in corners.
+**Character:** visual, paced, chapter-driven, easy to follow.
 
-**Typography:**
-- Display: `Manrope` (800)
-- Body: `Manrope` (400/500)
+**Layout:**
+- Strong chapter transitions
+- Large screenshots or slide images
+- Transcript text paired with related visuals
+- Key quote or takeaway moments
+- Step sequences and tool links
 
-**Colors:**
-```css
-:root {
-    --bg-dark: #0a0a0a;
-    --bg-white: #ffffff;
-    --accent-blue: #4361ee;
-    --text-dark: #0a0a0a;
-    --text-light: #ffffff;
-}
-```
+**Visual behavior:**
+- Slightly larger media than Editorial Clean
+- Distinct chapter colors or markers
+- Clear timeline/timestamp treatment when useful
+- More visual breathing room
 
-**Signature Elements:**
-- Two-panel vertical split
-- Accent bar on panel edge
-- Quote typography as hero element
-- Minimal, confident spacing
+**Avoid:** hiding transcript text behind excessive interactions.
 
 ---
 
-### 3. Creative Voltage
+## 3. Executive Brief
 
-**Vibe:** Bold, creative, energetic, retro-modern
+**Best for:** leadership reports, market summaries, government briefings, decision memos, business cases.
 
-**Layout:** Split panels—electric blue left, dark right. Script accents.
+**Character:** authoritative, concise, evidence-forward.
 
-**Typography:**
-- Display: `Syne` (700/800)
-- Mono: `Space Mono` (400/700)
+**Layout:**
+- Executive summary at top
+- Key findings block
+- Strong section hierarchy
+- Comparison tables and evidence callouts
+- Sources near the claims they support
 
-**Colors:**
-```css
-:root {
-    --bg-primary: #0066ff;
-    --bg-dark: #1a1a2e;
-    --accent-neon: #d4ff00;
-    --text-light: #ffffff;
-}
-```
+**Visual behavior:**
+- Restrained palette
+- Strong typographic hierarchy
+- Low decorative noise
+- Clear numbers and table labels
 
-**Signature Elements:**
-- Electric blue + neon yellow contrast
-- Halftone texture patterns
-- Neon badges/callouts
-- Script typography for creative flair
+**Avoid:** cinematic decoration that weakens credibility.
 
 ---
 
-### 4. Dark Botanical
+## 4. Research Reference
 
-**Vibe:** Elegant, sophisticated, artistic, premium
+**Best for:** technical reports, source-heavy research, analytical documents, product reference material.
 
-**Layout:** Centered content on dark. Abstract soft shapes in corner.
+**Character:** dense but orderly, precise, easy to verify.
 
-**Typography:**
-- Display: `Cormorant` (400/600) — elegant serif
-- Body: `IBM Plex Sans` (300/400)
+**Layout:**
+- Persistent or compact navigation
+- Narrow reading column plus wider evidence blocks
+- Tables, charts, definitions, annotations
+- Footnotes/source notes where appropriate
 
-**Colors:**
-```css
-:root {
-    --bg-primary: #0f0f0f;
-    --text-primary: #e8e4df;
-    --text-secondary: #9a9590;
-    --accent-warm: #d4a574;
-    --accent-pink: #e8b4b8;
-    --accent-gold: #c9b896;
-}
-```
+**Visual behavior:**
+- Neutral background
+- High contrast
+- Small number of semantic colors
+- Strong table and code styling
 
-**Signature Elements:**
-- Abstract soft gradient circles (blurred, overlapping)
-- Warm color accents (pink, gold, terracotta)
-- Thin vertical accent lines
-- Italic signature typography
-- **No illustrations—only abstract CSS shapes**
+**Avoid:** shrinking text to fit excessive density.
 
 ---
 
-## Light Themes
+## 5. Knowledge Studio
 
-### 5. Notebook Tabs
+**Best for:** product knowledge, internal wiki-style pages, project documentation, topic explainers.
 
-**Vibe:** Editorial, organized, elegant, tactile
+**Character:** modular, durable, easy to revisit.
 
-**Layout:** Cream paper card on dark background. Colorful tabs on right edge.
+**Layout:**
+- Overview + quick facts
+- Topic sections
+- Definition/callout blocks
+- Related links
+- Expandable secondary details when useful
 
-**Typography:**
-- Display: `Bodoni Moda` (400/700) — classic editorial
-- Body: `DM Sans` (400/500)
+**Visual behavior:**
+- Clear component language
+- Mild card usage for genuinely modular information
+- Consistent icon or label treatment
 
-**Colors:**
-```css
-:root {
-    --bg-outer: #2d2d2d;
-    --bg-page: #f8f6f1;
-    --text-primary: #1a1a1a;
-    --tab-1: #98d4bb; /* Mint */
-    --tab-2: #c7b8ea; /* Lavender */
-    --tab-3: #f4b8c5; /* Pink */
-    --tab-4: #a8d8ea; /* Sky */
-    --tab-5: #ffe6a7; /* Cream */
-}
-```
-
-**Signature Elements:**
-- Paper container with subtle shadow
-- Colorful section tabs on right edge (vertical text)
-- Binder hole decorations on left
-- Tab text must scale with viewport: `font-size: clamp(0.5rem, 1vh, 0.7rem)`
+**Avoid:** dashboard aesthetics when there is no real dashboard data.
 
 ---
 
-### 6. Pastel Geometry
+## 6. Brand Story
 
-**Vibe:** Friendly, organized, modern, approachable
+**Best for:** customer stories, company narratives, case studies, event recaps, visual project showcases.
 
-**Layout:** White card on pastel background. Vertical pills on right edge.
+**Character:** expressive but readable.
 
-**Typography:**
-- Display: `Plus Jakarta Sans` (700/800)
-- Body: `Plus Jakarta Sans` (400/500)
+**Layout:**
+- Strong opening visual
+- Narrative sections
+- Quotes and milestones
+- Full-width photography or screenshots
+- Outcome/result sections
 
-**Colors:**
-```css
-:root {
-    --bg-primary: #c8d9e6;
-    --card-bg: #faf9f7;
-    --pill-pink: #f0b4d4;
-    --pill-mint: #a8d4c4;
-    --pill-sage: #5a7c6a;
-    --pill-lavender: #9b8dc4;
-    --pill-violet: #7c6aad;
-}
-```
+**Visual behavior:**
+- May use darker or richer backgrounds
+- Larger imagery
+- More distinctive typography
+- Controlled motion
 
-**Signature Elements:**
-- Rounded card with soft shadow
-- **Vertical pills on right edge** with varying heights (like tabs)
-- Consistent pill width, heights: short → medium → tall → medium → short
-- Download/action icon in corner
+**Avoid:** decorative effects unrelated to the story.
 
 ---
 
-### 7. Split Pastel
+# Choosing a Preset
 
-**Vibe:** Playful, modern, friendly, creative
+Use this default mapping:
 
-**Layout:** Two-color vertical split (peach left, lavender right).
+| Task | Recommended preset |
+| --- | --- |
+| Transcript + slides | Immersive Course |
+| Tutorial / SOP | Editorial Clean |
+| Customer case | Editorial Clean or Brand Story |
+| Executive / government report | Executive Brief |
+| Technical / source-heavy report | Research Reference |
+| Product / internal knowledge | Knowledge Studio |
 
-**Typography:**
-- Display: `Outfit` (700/800)
-- Body: `Outfit` (400/500)
+If the user provides a visual reference, treat that reference as the primary design system and use these presets only as implementation guidance.
 
-**Colors:**
-```css
-:root {
-    --bg-peach: #f5e6dc;
-    --bg-lavender: #e4dff0;
-    --text-dark: #1a1a1a;
-    --badge-mint: #c8f0d8;
-    --badge-yellow: #f0f0c8;
-    --badge-pink: #f0d4e0;
-}
-```
+# Preview Rules
 
-**Signature Elements:**
-- Split background colors
-- Playful badge pills with icons
-- Grid pattern overlay on right panel
-- Rounded CTA buttons
+When visual previews are needed:
 
----
-
-### 8. Vintage Editorial
-
-**Vibe:** Witty, confident, editorial, personality-driven
-
-**Layout:** Centered content on cream. Abstract geometric shapes as accent.
-
-**Typography:**
-- Display: `Fraunces` (700/900) — distinctive serif
-- Body: `Work Sans` (400/500)
-
-**Colors:**
-```css
-:root {
-    --bg-cream: #f5f3ee;
-    --text-primary: #1a1a1a;
-    --text-secondary: #555;
-    --accent-warm: #e8d4c0;
-}
-```
-
-**Signature Elements:**
-- Abstract geometric shapes (circle outline + line + dot)
-- Bold bordered CTA boxes
-- Witty, conversational copy style
-- **No illustrations—only geometric CSS shapes**
-
----
-
-## Specialty Themes
-
-### 9. Neon Cyber
-
-**Vibe:** Futuristic, techy, confident
-
-**Typography:** `Clash Display` + `Satoshi` (Fontshare)
-
-**Colors:** Deep navy (#0a0f1c), cyan accent (#00ffcc), magenta (#ff00aa)
-
-**Signature:** Particle backgrounds, neon glow, grid patterns
-
----
-
-### 10. Terminal Green
-
-**Vibe:** Developer-focused, hacker aesthetic
-
-**Typography:** `JetBrains Mono` (monospace only)
-
-**Colors:** GitHub dark (#0d1117), terminal green (#39d353)
-
-**Signature:** Scan lines, blinking cursor, code syntax styling
-
----
-
-### 11. Swiss Modern
-
-**Vibe:** Clean, precise, Bauhaus-inspired
-
-**Typography:** `Archivo` (800) + `Nunito` (400)
-
-**Colors:** Pure white, pure black, red accent (#ff3300)
-
-**Signature:** Visible grid, asymmetric layouts, geometric shapes
-
----
-
-### 12. Paper & Ink
-
-**Vibe:** Editorial, literary, thoughtful
-
-**Typography:** `Cormorant Garamond` + `Source Serif 4`
-
-**Colors:** Warm cream (#faf9f7), charcoal (#1a1a1a), crimson accent (#c41e3a)
-
-**Signature:** Drop caps, pull quotes, elegant horizontal rules
-
----
-
-## Font Pairing Quick Reference
-
-| Preset | Display Font | Body Font | Source |
-|--------|--------------|-----------|--------|
-| Bold Signal | Archivo Black | Space Grotesk | Google |
-| Electric Studio | Manrope | Manrope | Google |
-| Creative Voltage | Syne | Space Mono | Google |
-| Dark Botanical | Cormorant | IBM Plex Sans | Google |
-| Notebook Tabs | Bodoni Moda | DM Sans | Google |
-| Pastel Geometry | Plus Jakarta Sans | Plus Jakarta Sans | Google |
-| Split Pastel | Outfit | Outfit | Google |
-| Vintage Editorial | Fraunces | Work Sans | Google |
-| Neon Cyber | Clash Display | Satoshi | Fontshare |
-| Terminal Green | JetBrains Mono | JetBrains Mono | JetBrains |
-
----
-
-## DO NOT USE (Generic AI Patterns)
-
-**Fonts:** Inter, Roboto, Arial, system fonts as display
-
-**Colors:** `#6366f1` (generic indigo), purple gradients on white
-
-**Layouts:** Everything centered, generic hero sections, identical card grids
-
-**Decorations:** Realistic illustrations, gratuitous glassmorphism, drop shadows without purpose
-
----
-
-## CSS Gotchas
-
-### Negating CSS Functions
-
-**WRONG — silently ignored by browsers (no console error):**
-```css
-right: -clamp(28px, 3.5vw, 44px);   /* Browser ignores this */
-margin-left: -min(10vw, 100px);      /* Browser ignores this */
-```
-
-**CORRECT — wrap in `calc()`:**
-```css
-right: calc(-1 * clamp(28px, 3.5vw, 44px));  /* Works */
-margin-left: calc(-1 * min(10vw, 100px));     /* Works */
-```
-
-CSS does not allow a leading `-` before function names. The browser silently discards the entire declaration — no error, the element just appears in the wrong position. **Always use `calc(-1 * ...)` to negate CSS function values.**
+- Generate at most 3 options.
+- Use real user content in the preview.
+- Make the options meaningfully different.
+- Do not show internal labels inside the preview page such as `Option A`, `preset`, `generated`, or file paths.
+- A preview should look like a genuine first section of the final page.
+- Once the user chooses a direction, preserve its typography, palette, spacing rhythm, media treatment, and component grammar throughout the page.
