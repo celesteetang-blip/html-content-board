@@ -27,50 +27,103 @@ Create polished, responsive HTML content experiences that combine structured tex
 
 ## Design Aesthetics
 
-You tend to converge toward generic, "on distribution" outputs. In frontend design, this creates what users call the "AI slop" aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.
+Design must support understanding first and visual distinction second. The page should feel intentionally designed for its specific content, but never sacrifice readability for decoration.
 
 Focus on:
 
-- Typography: Choose fonts that are beautiful, unique, and interesting. Avoid generic fonts like Arial and Inter; opt instead for distinctive choices that elevate the frontend's aesthetics.
-- Color & Theme: Commit to a cohesive aesthetic. Use CSS variables for consistency. Dominant colors with sharp accents outperform timid, evenly-distributed palettes. Draw from IDE themes and cultural aesthetics for inspiration.
-- Motion: Use animations for effects and micro-interactions. Prioritize CSS-only solutions for HTML. Use Motion library for React when available. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (animation-delay) creates more delight than scattered micro-interactions.
-- Backgrounds: Create atmosphere and depth rather than defaulting to solid colors. Layer CSS gradients, use geometric patterns, or add contextual effects that match the overall aesthetic.
+- **Typography** — Build a clear type hierarchy for title, section heading, subheading, body, captions, quotes, and metadata. Use distinctive fonts when appropriate, but long-form body text must remain highly readable.
+- **Color & Theme** — Use a cohesive palette and CSS variables. Color should clarify hierarchy, emphasis, chapters, callouts, and navigation rather than decorate every element.
+- **Motion** — Use restrained motion to support orientation and emphasis. Prefer subtle section reveals, navigation feedback, and purposeful transitions. Do not animate every card or paragraph.
+- **Backgrounds** — Use atmosphere selectively. Long reading sections should remain calm and comfortable. Decorative backgrounds must never reduce text contrast.
+- **Components** — Use cards, timelines, quotes, comparison blocks, diagrams, tables, media panels, and callouts only when they improve information structure.
+- **Visual Rhythm** — Alternate text, imagery, whitespace, callouts, and section transitions so long pages remain easy to scan.
+- **Source Visuals** — When screenshots, PowerPoint pages, diagrams, charts, or photos are provided, treat them as primary content rather than decoration.
 
 Avoid generic AI-generated aesthetics:
 
-- Overused font families (Inter, Roboto, Arial, system fonts)
-- Cliched color schemes (particularly purple gradients on white backgrounds)
-- Predictable layouts and component patterns
-- Cookie-cutter design that lacks context-specific character
+- Purple-gradient-on-white defaults
+- Endless rounded cards with identical visual weight
+- Dashboard layouts for content that is actually an article or tutorial
+- Excessive pills, badges, glassmorphism, shadows, or floating panels
+- Repeating the same two-column layout for every section
+- Oversized hero sections that consume most of the first screen without adding information
+- Low-contrast text
+- Decorative animation that slows reading
+- Visual effects unrelated to the content
 
-Interpret creatively and make unexpected choices that feel genuinely designed for the context. Vary between light and dark themes, different fonts, different aesthetics. You still tend to converge on common choices (Space Grotesk, for example) across generations. Avoid this: it is critical that you think outside the box!
+The goal is not maximum decoration. The goal is a page that feels authored, clear, memorable, and appropriate to the material.
 
-## Fixed Stage Rules
+## Responsive Layout Rules
 
-These invariants apply to EVERY slide in EVERY presentation:
+These rules apply to EVERY HTML content board:
 
-- Every deck has a viewport wrapper that fills the browser window.
-- Every slide is authored inside a fixed 1920×1080 stage.
-- The stage scales uniformly to fit the viewport. It may letterbox/pillarbox; it must not re-layout content.
-- Do not use responsive breakpoints to rearrange slide content for phones.
-- Use fixed internal slide measurements at the 1920×1080 design size.
-- Slide visibility must be controlled by `.active` / `.visible` using `visibility`, `opacity`, and `pointer-events` from `viewport-base.css`. Do not use `display: none` / `display: block` for slide switching; later layout classes such as `.slide-content { display: flex; }` can override them and make every slide visible at once.
-- Use `clamp()` only for non-slide UI outside the stage, or for small fallback previews where a full stage is impractical.
-- Include `prefers-reduced-motion` support
-- Never negate CSS functions directly (`-clamp()`, `-min()`, `-max()` are silently ignored) — use `calc(-1 * clamp(...))` instead
+1. **Natural document flow** — Long-form pages may scroll vertically. Never force long content into a fixed presentation canvas.
 
-**When generating, read `viewport-base.css` and include its full contents in every presentation.**
+2. **Responsive reflow** — Layouts must adapt across desktop, tablet, and mobile. Multi-column layouts should collapse intelligently rather than simply shrink.
+
+3. **Readable line length** — Long-form body text should normally stay within a comfortable reading width. Use wider containers only for media, diagrams, tables, galleries, or comparison layouts.
+
+4. **Mobile-first safety** — At narrow widths, default to a clear single-column reading flow unless a component genuinely requires another structure.
+
+5. **No accidental horizontal overflow** — The document itself must not create horizontal scrolling. Wide tables, code blocks, or special comparison elements may use their own controlled horizontal scroll containers.
+
+6. **Responsive typography and spacing** — Use fluid CSS techniques such as `clamp()` where appropriate. Do not make mobile text unreadably small in order to preserve a desktop composition.
+
+7. **Navigation adapts to viewport** — Desktop may use sticky side navigation or a sticky top table of contents. On mobile, convert complex navigation into a compact, collapsible, or horizontally manageable form.
+
+8. **Image integrity** — Never stretch or distort source images.
+   - Screenshots, slide pages, charts, and diagrams should normally use `object-fit: contain`.
+   - Decorative photography may use `object-fit: cover` when cropping is intentional.
+   - Preserve aspect ratio unless the source itself is being intentionally cropped.
+
+9. **Media hierarchy** — Important screenshots and slides should be large enough to inspect. Do not place critical visual content into tiny thumbnails merely to fit a grid.
+
+10. **Tables and dense data** — Preserve readability. On smaller screens, use controlled horizontal scrolling, stacked records, or responsive transformations rather than compressing all columns until text becomes unreadable.
+
+11. **Touch targets** — Interactive controls should remain comfortably usable on touch devices.
+
+12. **Accessibility** — Maintain strong text contrast, semantic heading order, visible focus states, meaningful link text, and useful alt text when source context allows it.
+
+13. **Reduced motion** — Respect `prefers-reduced-motion`.
+
+14. **Section rhythm** — Long pages must have obvious chapter boundaries, whitespace, heading hierarchy, and visual changes so users can quickly understand where they are.
+
+15. **No unnecessary framework requirement** — Prefer standard HTML/CSS/JS unless the task genuinely benefits from another framework.
 
 ### Content Density Modes
 
-Ask the user whether this is primarily a reading deck or a speaking deck, then design around that answer:
+Infer the most appropriate density from the task and source material. Do not ask the user unless the correct mode is genuinely ambiguous.
 
 | Density mode | Best for | Design behavior |
-| ------------- | -------- | --------------- |
-| **Low density / speaker-led** | Public talks, keynote-style sharing, live explanation | One idea per slide, large type, strong visual hierarchy, generous negative space, 1-3 bullets max, more slides if needed |
-| **High density / reading-first** | Reports, handouts, async review, detailed internal docs | More self-contained slides, structured grids/tables/annotations, 4-8 bullets or 4-6 cards when readable, tighter but still intentional spacing |
+| --- | --- | --- |
+| **Immersive / Visual** | Video tutorials, visual walkthroughs, transcript boards, event recaps | Larger media, shorter text blocks, strong chapter moments, key quotes, screenshots, step sequences, generous whitespace |
+| **Editorial / Balanced** | Training materials, customer cases, knowledge articles, workflow guides | Balanced text and visuals, comfortable reading width, clear chapter navigation, callouts and media where useful |
+| **Research / Reference** | Research reports, detailed analysis, technical material, source-heavy documents | Higher information density, tables, citations, annotations, structured evidence, restrained decoration, efficient scanning |
 
-Baseline limits still apply: no scrolling, no overflow, no overlapping panels, and no text below comfortable reading size. If content exceeds the selected density mode, split it into more slides instead of shrinking until it becomes cramped.
+Default behavior:
+
+- Transcript + slides + screenshots → usually **Immersive / Visual**
+- Training guide or customer case → usually **Editorial / Balanced**
+- Research or data-heavy report → usually **Research / Reference**
+
+Density affects spacing and information presentation, not factual completeness.
+
+Never delete important source material merely to make a page look cleaner. If the source is long, use chapters, expandable secondary details, navigation, summaries, or progressive disclosure instead of silently removing content.
+
+### Long-Form Reading Structure
+
+For substantial pages, prefer a clear information architecture such as:
+
+- Title / context
+- Short executive summary or key takeaways
+- Table of contents when useful
+- Logical chapters
+- Relevant screenshots, slides, diagrams, or media placed near the text they support
+- Key insights or callouts
+- Sources / links / further reading when supplied
+- Clear ending or next-step section when appropriate
+
+Do not mechanically force every page to contain all of these sections. Use only the structures that improve the specific content.
 
 ---
 
