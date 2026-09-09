@@ -1,29 +1,26 @@
 ---
 name: html-content-board
-description: Create responsive, visually structured HTML content experiences from transcripts, PDFs, PowerPoint files, documents, images, notes, and research. Use for transcript boards, tutorials, training materials, reports, knowledge pages, customer cases, workflow guides, and long-form visual content.
+description: Create polished, responsive HTML content experiences from transcripts, PDFs, PowerPoint files, Word documents, Markdown, notes, images, screenshots, research, and existing HTML. Use for transcript boards, tutorials, training materials, reports, knowledge pages, customer cases, workflow guides, source conversion, and long-form visual content.
 ---
 
 # HTML Content Board
 
-Create polished, responsive HTML content experiences that combine structured text, visuals, navigation, and source materials in the browser.
+Create responsive, browser-based content experiences that combine source-faithful text, visuals, navigation, and useful interactions. The goal is not merely to convert files into HTML. The goal is to turn source material into a clear, visual, durable reading experience.
 
 ## Core Principles
 
-1. **Zero-Build First** — Prefer self-contained HTML/CSS/JS. Avoid unnecessary frameworks, package managers, and build tools.
+1. **Source Fidelity First** — Never invent facts, links, quotations, timestamps, statistics, people, citations, product claims, or source material that are not supported by the user's files or approved research.
+2. **Content and Visuals Are Designed Together** — Do not build a text-only page first and decorate it later. Slides, screenshots, diagrams, charts, photos, and text should shape the information architecture together.
+3. **Responsive Reading Experience (NON-NEGOTIABLE)** — Pages must reflow naturally across desktop, tablet, and mobile. Never force long-form content into a fixed presentation canvas.
+4. **Distinctive but Readable** — Avoid generic AI-looking layouts, but never sacrifice comprehension, reading comfort, or source clarity for decoration.
+5. **Show, Don't Tell** — When visual direction is genuinely ambiguous, show a small number of real visual previews instead of asking the user to describe abstract design preferences.
+6. **Progressive Disclosure** — Read only the supporting rules and templates needed for the current task. Do not load every template, style reference, or optional component by default.
+7. **Inspect Before Asking** — If the user already supplied source files, inspect them before asking questions. Do not ask for information that can be inferred from the sources.
+8. **Preserve Useful Detail** — Do not silently delete important source content to make the page look cleaner. Reorganize, summarize carefully, add navigation, or move secondary detail into expandable sections.
+9. **Zero-Build First** — Prefer standard HTML/CSS/JS that opens locally without a build step. Use a framework only when the requested functionality clearly benefits from it.
+10. **Visual QA Is Mandatory** — Render and inspect the final page before delivery whenever the environment supports it. Static code review alone is not enough for layout-sensitive work.
 
-2. **Show, Don't Tell** — When visual direction matters, generate visual previews instead of asking users to describe abstract design preferences.
-
-3. **Distinctive but Readable** — Avoid generic AI-generated design. Every page should feel intentionally designed for its content while maintaining excellent readability.
-
-4. **Progressive Disclosure** — Read only the style rules, templates, components, and supporting files needed for the current task. Do not load every template or design reference at once.
-
-5. **Responsive Reading Experience (NON-NEGOTIABLE)** — Every HTML page must adapt naturally across desktop, tablet, and mobile. Content must reflow responsively rather than scale as a fixed canvas.
-
-6. **Content and Visuals Are Designed Together** — Do not build a text-only page first and add images later. Screenshots, slides, diagrams, photos, and text should shape the information architecture together.
-
-7. **Source Fidelity** — Never invent facts, links, quotations, timestamps, or source material that are not supported by the provided content.
-
-8. **Visual QA Is Mandatory** — Always render and inspect the final HTML before delivery. Check responsive layout, overflow, broken images, navigation, links, typography, and visual hierarchy.
+---
 
 ## Design Aesthetics
 
@@ -31,68 +28,58 @@ Design must support understanding first and visual distinction second. The page 
 
 Focus on:
 
-- **Typography** — Build a clear type hierarchy for title, section heading, subheading, body, captions, quotes, and metadata. Use distinctive fonts when appropriate, but long-form body text must remain highly readable.
-- **Color & Theme** — Use a cohesive palette and CSS variables. Color should clarify hierarchy, emphasis, chapters, callouts, and navigation rather than decorate every element.
-- **Motion** — Use restrained motion to support orientation and emphasis. Prefer subtle section reveals, navigation feedback, and purposeful transitions. Do not animate every card or paragraph.
+- **Typography** — Build a clear hierarchy for title, section heading, subheading, body, captions, quotes, code, tables, and metadata. Choose fonts that work well for the document language; for multilingual or CJK content, prioritize reliable glyph coverage and reading comfort.
+- **Color & Theme** — Use a cohesive palette and CSS variables. Color should clarify hierarchy, chapters, callouts, evidence, and navigation rather than decorate every element.
+- **Motion** — Use restrained motion for orientation and emphasis. Prefer subtle section reveals, navigation feedback, and purposeful transitions. Do not animate every card or paragraph.
 - **Backgrounds** — Use atmosphere selectively. Long reading sections should remain calm and comfortable. Decorative backgrounds must never reduce text contrast.
-- **Components** — Use cards, timelines, quotes, comparison blocks, diagrams, tables, media panels, and callouts only when they improve information structure.
+- **Components** — Use cards, timelines, quotes, comparison blocks, diagrams, tables, media panels, source notes, and callouts only when they improve information structure.
 - **Visual Rhythm** — Alternate text, imagery, whitespace, callouts, and section transitions so long pages remain easy to scan.
-- **Source Visuals** — When screenshots, PowerPoint pages, diagrams, charts, or photos are provided, treat them as primary content rather than decoration.
+- **Source Visuals** — Treat screenshots, PowerPoint pages, diagrams, charts, or photos as primary content when they carry information.
 
-Avoid generic AI-generated aesthetics:
+Avoid:
 
 - Purple-gradient-on-white defaults
 - Endless rounded cards with identical visual weight
-- Dashboard layouts for content that is actually an article or tutorial
+- Dashboard layouts for content that is actually an article, tutorial, transcript, or report
 - Excessive pills, badges, glassmorphism, shadows, or floating panels
 - Repeating the same two-column layout for every section
-- Oversized hero sections that consume most of the first screen without adding information
+- Oversized hero areas that consume most of the first screen without adding information
 - Low-contrast text
 - Decorative animation that slows reading
 - Visual effects unrelated to the content
+- Tiny screenshots that cannot be inspected
 
 The goal is not maximum decoration. The goal is a page that feels authored, clear, memorable, and appropriate to the material.
 
+---
+
 ## Responsive Layout Rules
 
-These rules apply to EVERY HTML content board:
+These rules apply to every HTML content board:
 
-1. **Natural document flow** — Long-form pages may scroll vertically. Never force long content into a fixed presentation canvas.
-
+1. **Natural document flow** — Long-form pages may scroll vertically. Never force them into 16:9 or any other fixed presentation stage.
 2. **Responsive reflow** — Layouts must adapt across desktop, tablet, and mobile. Multi-column layouts should collapse intelligently rather than simply shrink.
-
-3. **Readable line length** — Long-form body text should normally stay within a comfortable reading width. Use wider containers only for media, diagrams, tables, galleries, or comparison layouts.
-
-4. **Mobile-first safety** — At narrow widths, default to a clear single-column reading flow unless a component genuinely requires another structure.
-
-5. **No accidental horizontal overflow** — The document itself must not create horizontal scrolling. Wide tables, code blocks, or special comparison elements may use their own controlled horizontal scroll containers.
-
-6. **Responsive typography and spacing** — Use fluid CSS techniques such as `clamp()` where appropriate. Do not make mobile text unreadably small in order to preserve a desktop composition.
-
-7. **Navigation adapts to viewport** — Desktop may use sticky side navigation or a sticky top table of contents. On mobile, convert complex navigation into a compact, collapsible, or horizontally manageable form.
-
-8. **Image integrity** — Never stretch or distort source images.
-   - Screenshots, slide pages, charts, and diagrams should normally use `object-fit: contain`.
-   - Decorative photography may use `object-fit: cover` when cropping is intentional.
-   - Preserve aspect ratio unless the source itself is being intentionally cropped.
-
-9. **Media hierarchy** — Important screenshots and slides should be large enough to inspect. Do not place critical visual content into tiny thumbnails merely to fit a grid.
-
-10. **Tables and dense data** — Preserve readability. On smaller screens, use controlled horizontal scrolling, stacked records, or responsive transformations rather than compressing all columns until text becomes unreadable.
-
-11. **Touch targets** — Interactive controls should remain comfortably usable on touch devices.
-
-12. **Accessibility** — Maintain strong text contrast, semantic heading order, visible focus states, meaningful link text, and useful alt text when source context allows it.
-
+3. **Readable line length** — Long-form body text should normally stay within a comfortable reading width. Use wider containers only for media, diagrams, tables, galleries, or comparisons.
+4. **Mobile-first safety** — At narrow widths, default to a clear single-column flow unless a component genuinely requires another structure.
+5. **No accidental horizontal overflow** — The document itself must not create horizontal scrolling. Wide tables, code blocks, and special comparisons may use their own controlled scroll containers.
+6. **Responsive type and spacing** — Use fluid CSS such as `clamp()` where useful. Never make mobile text unreadably small to preserve a desktop composition.
+7. **Adaptive navigation** — Desktop may use sticky side navigation or a sticky top table of contents. On mobile, convert complex navigation into a compact, collapsible, or horizontally manageable form.
+8. **Image integrity** — Never stretch or distort source images. Screenshots, slides, charts, and diagrams normally use `object-fit: contain`; decorative photography may use `cover` when intentional.
+9. **Media hierarchy** — Important screenshots and slides must be large enough to inspect. Do not hide critical content in tiny thumbnails.
+10. **Tables and dense data** — On smaller screens, use controlled horizontal scrolling, stacked records, or responsive transformations rather than compressing columns until text becomes unreadable.
+11. **Touch targets** — Interactive controls must remain comfortably usable on touch devices.
+12. **Accessibility** — Maintain strong contrast, semantic heading order, visible focus states, meaningful link text, and useful alt text when context allows.
 13. **Reduced motion** — Respect `prefers-reduced-motion`.
+14. **Section rhythm** — Long pages need obvious chapter boundaries, whitespace, heading hierarchy, and orientation cues.
+15. **Print/PDF sanity** — If the user may print or export the page, avoid layouts that collapse badly in print. Use print CSS when appropriate.
 
-14. **Section rhythm** — Long pages must have obvious chapter boundaries, whitespace, heading hierarchy, and visual changes so users can quickly understand where they are.
+When generating final HTML, read `responsive-base.css` and adapt its rules to the chosen style.
 
-15. **No unnecessary framework requirement** — Prefer standard HTML/CSS/JS unless the task genuinely benefits from another framework.
+---
 
-### Content Density Modes
+## Content Density Modes
 
-Infer the most appropriate density from the task and source material. Do not ask the user unless the correct mode is genuinely ambiguous.
+Infer the most appropriate density from the task and source material. Do not ask unless the correct mode is genuinely ambiguous.
 
 | Density mode | Best for | Design behavior |
 | --- | --- | --- |
@@ -100,344 +87,507 @@ Infer the most appropriate density from the task and source material. Do not ask
 | **Editorial / Balanced** | Training materials, customer cases, knowledge articles, workflow guides | Balanced text and visuals, comfortable reading width, clear chapter navigation, callouts and media where useful |
 | **Research / Reference** | Research reports, detailed analysis, technical material, source-heavy documents | Higher information density, tables, citations, annotations, structured evidence, restrained decoration, efficient scanning |
 
-Default behavior:
+Defaults:
 
-- Transcript + slides + screenshots → usually **Immersive / Visual**
-- Training guide or customer case → usually **Editorial / Balanced**
-- Research or data-heavy report → usually **Research / Reference**
+- Transcript + slides + screenshots → **Immersive / Visual**
+- Training guide or customer case → **Editorial / Balanced**
+- Research or data-heavy report → **Research / Reference**
 
-Density affects spacing and information presentation, not factual completeness.
+Density changes spacing and presentation, not factual completeness.
 
-Never delete important source material merely to make a page look cleaner. If the source is long, use chapters, expandable secondary details, navigation, summaries, or progressive disclosure instead of silently removing content.
+---
 
-### Long-Form Reading Structure
+# Phase 0 — Detect Task Mode
 
-For substantial pages, prefer a clear information architecture such as:
+Determine the user's primary task before planning the page. Choose one primary mode and borrow rules from secondary modes as needed.
+
+## Mode A — Transcript Board
+
+Use for video, meeting, course, webinar, interview, or podcast transcripts, especially when combined with slides, screenshots, video frames, or links.
+
+Primary goal: turn chronological spoken content into a structured, visual, readable HTML experience.
+
+Typical structure:
+
+- Title and context
+- Short overview or key takeaways
+- Chapter navigation
+- Lightly cleaned transcript
+- Relevant slide pages, screenshots, or video frames near the related transcript section
+- Key points and quotes
+- Tools, websites, documents, or links mentioned in the material
+- Timestamps when available and useful
+
+Rules:
+
+- Preserve the speaker's meaning, order, and level of certainty.
+- Light editing for readability is allowed: remove filler, repair obvious transcription fragments, normalize punctuation, and split paragraphs.
+- Do not rewrite the transcript into a different article unless explicitly requested.
+- Match slides and screenshots semantically and chronologically; do not attach visuals randomly.
+- If a deck is missing but video frames are available, representative frames may be used as visual anchors.
+
+Default density: **Immersive / Visual**.
+
+## Mode B — Tutorial / Training Guide
+
+Use for step-by-step tutorials, SOPs, workflows, software training, internal training materials, process explanations, course notes, and operational playbooks.
+
+Primary goal: make it obvious what to do, in what order, and why.
+
+Prefer:
+
+- Clear step numbering
+- Screenshots near the relevant step
+- Before/after examples
+- Checklists
+- Warnings and common mistakes
+- Decision points
+- Copyable commands, prompts, or templates when useful
+- Expected outcome or success check after major steps
+
+Do not bury actions inside long prose.
+
+Default density: **Editorial / Balanced**.
+
+## Mode C — Research / Report
+
+Use for market analysis, industry analysis, executive or government briefings, technical research, source-heavy reports, and data-heavy documents.
+
+Primary goal: make evidence easy to understand, verify, and navigate.
+
+Prefer:
+
+- Executive summary
+- Clear section hierarchy
+- Key findings
+- Tables and charts where they improve comprehension
+- Evidence and source attribution
+- Comparison blocks
+- Data notes and methodology notes when relevant
+- References / further reading
+
+Do not invent missing data or unsupported conclusions.
+
+Default density: **Research / Reference**.
+
+## Mode D — Knowledge Page / Case / Product Content
+
+Use for customer cases, product knowledge, company knowledge, internal reference pages, topic explainers, business cases, project documentation, and durable knowledge pages.
+
+Primary goal: create a reference page that is easier to understand and revisit than the original source files.
+
+Choose density from the source:
+
+- Visual story or case → **Immersive / Visual**
+- General knowledge page → **Editorial / Balanced**
+- Technical reference → **Research / Reference**
+
+## Mode E — Source Conversion
+
+Use when the main task is converting existing material into HTML, including PDF, PowerPoint, Word, Markdown, notes, or multiple files.
+
+Source conversion is not mechanical format conversion. First determine:
+
+1. What information exists
+2. Which visuals belong with which content
+3. What hierarchy the source implies
+4. What can be reorganized for better reading
+5. What must remain faithful to the source
+
+Preserve source meaning, facts, important tables, visuals, and useful links. Do not reproduce a poor original layout merely because it existed in the source file.
+
+## Mode F — Existing HTML Enhancement
+
+Use when the user already has an HTML page and wants it improved, expanded, corrected, or redesigned.
+
+Before modifying:
+
+1. Inspect the existing HTML structure, CSS, JS, assets, and working interactions.
+2. Identify what is already correct and should remain unchanged.
+3. Understand the requested change before restructuring unrelated sections.
+4. Preserve working functionality unless explicitly asked to replace it.
+5. Reuse the existing visual system when appropriate instead of introducing an unrelated design language.
+
+After modification, verify desktop, tablet, mobile, navigation, links, images, tables, overflow, and interactive controls.
+
+## Mixed-Mode Tasks
+
+Examples:
+
+- Transcript + PPT + links → primary **Transcript Board**, secondary **Source Conversion**
+- PDF research report + request for a better web presentation → primary **Research / Report**, secondary **Source Conversion**
+- Existing HTML + new transcript chapter → primary **Existing HTML Enhancement**, secondary **Transcript Board**
+
+Do not ask the user to classify the mode when it can be inferred confidently from the supplied material.
+
+---
+
+# Phase 1 — Source Inspection and Inventory
+
+If source files are already present, inspect them before asking questions.
+
+## 1.1 Build a source inventory
+
+Identify all available source types:
+
+- PDF
+- PPT/PPTX
+- DOC/DOCX
+- Markdown / TXT
+- Spreadsheet / CSV
+- Images and screenshots
+- Existing HTML/CSS/JS
+- Transcript files
+- Video or audio when extractable
+- User-provided URLs or references
+
+For each source, note:
+
+- What it contains
+- Whether it is primary evidence, supporting context, or decoration
+- Whether text extraction is reliable
+- Whether visual inspection is needed
+- Whether links or citations are embedded
+- Whether there are duplicates or alternate versions
+
+## 1.2 Read before asking
+
+Do not ask questions such as "What is the title?", "How many sections?", or "Do you have content?" if the answer is already visible in the sources.
+
+Ask only for genuinely unresolved choices that materially affect the output, such as:
+
+- Target audience when impossible to infer
+- Whether the user wants a faithful transcript vs a heavily rewritten article
+- Whether private/sensitive source details should be omitted
+- Whether a specific existing brand system must be followed
+
+If those choices are not essential, proceed with sensible defaults and state them briefly at delivery.
+
+## 1.3 Image and visual evaluation
+
+For each relevant visual, determine:
+
+- What it shows
+- Whether it is readable at useful display size
+- Which section it supports
+- Whether cropping is acceptable
+- Whether it should be shown full-width, paired with text, placed in a gallery, or excluded
+
+Do not include low-value duplicates merely because they exist.
+
+For more detailed source-handling rules, read `CONTENT_RULES.md`.
+
+---
+
+# Phase 2 — Build the Information Architecture
+
+Create the content structure before coding the full page.
+
+## 2.1 Identify the reader's path
+
+Determine what the reader should understand first, next, and last.
+
+A strong long-form structure often includes:
 
 - Title / context
-- Short executive summary or key takeaways
+- Short summary or key takeaways
 - Table of contents when useful
 - Logical chapters
-- Relevant screenshots, slides, diagrams, or media placed near the text they support
+- Relevant media near the text it supports
 - Key insights or callouts
 - Sources / links / further reading when supplied
 - Clear ending or next-step section when appropriate
 
-Do not mechanically force every page to contain all of these sections. Use only the structures that improve the specific content.
+Do not mechanically force every page to contain all sections.
+
+## 2.2 Preserve source truth while improving structure
+
+You may:
+
+- Reorder sections for comprehension when chronology is not essential
+- Merge redundant source sections
+- Split overloaded sections
+- Add descriptive headings
+- Add concise summaries that are clearly supported by the source
+- Convert repeated facts into a table
+
+You may not:
+
+- Invent missing evidence
+- Upgrade uncertainty into certainty
+- Create fake quotations or links
+- Silently omit a major source section merely because it is visually inconvenient
+
+## 2.3 Transcript + deck matching
+
+When a transcript and deck are both present:
+
+1. Identify deck page topics.
+2. Identify transcript topic boundaries.
+3. Match pages to the nearest related transcript chapter using semantic topic and chronology.
+4. Avoid repeating the same slide excessively unless the conversation returns to it meaningfully.
+5. If a slide contains critical text, include enough context in HTML that the reader does not need perfect eyesight to understand the point.
 
 ---
 
-## Phase 0: Detect Mode
+# Phase 3 — Choose Visual Direction
 
-Determine what the user wants:
+Read `STYLE_PRESETS.md`.
 
-- **Mode A: New Presentation** — Create from scratch. Go to Phase 1.
-- **Mode B: PPT Conversion** — Convert a .pptx file. Go to Phase 4.
-- **Mode C: Enhancement** — Improve an existing HTML presentation. Read it, understand it, enhance. **Follow Mode C modification rules below.**
+## 3.1 When previews are useful
 
-### Mode C: Modification Rules
+Generate up to three small real HTML previews only when:
 
-When enhancing existing presentations, fixed-stage fitting is the biggest risk:
+- The user has not supplied a visual reference
+- The source does not imply a strong style
+- Visual direction materially affects the result
 
-1. **Before adding content:** Count existing elements, check against density limits
-2. **Adding images:** Fit them inside the 1920×1080 slide canvas. If slide already has max content, split into two slides
-3. **Adding text:** Max 4-6 bullets per slide. Exceeds limits? Split into continuation slides
-4. **After ANY modification, verify:** the slide stage remains 16:9, no text overflows its card, no panels overlap, and screenshots look correct at 1280×720 plus one phone viewport
-5. **Proactively reorganize:** If modifications will cause overflow, automatically split content and inform the user. Don't wait to be asked
+Previews should use real content from the user's material, not diagnostic labels or fake placeholder copy.
 
-**When adding images to existing slides:** Move image to a new slide or reduce other content first. Never add images without checking if existing content already fills the 1920×1080 slide stage.
+## 3.2 When not to ask for a style choice
 
----
+Do not stop for style selection when:
 
-## Phase 1: Content Discovery (New Presentations)
+- The user already supplied a reference page or screenshot
+- The existing HTML has a clear design system that should be preserved
+- The task is routine internal documentation and a sensible professional style is obvious
+- The user explicitly said to proceed without questions
 
-**Ask ALL questions together** so the user fills everything out at once. If the current environment provides a native structured-question UI, use it; otherwise ask in one concise message with clearly numbered choices:
+In these cases, choose an appropriate preset and continue.
 
-**Question 1 — Purpose** (header: "Purpose"):
-What is this presentation for? Options: Pitch deck / Teaching-Tutorial / Conference talk / Internal presentation
+## 3.3 Visual reference priority
 
-**Question 2 — Length** (header: "Length"):
-Approximately how many slides? Options: Short 5-10 / Medium 10-20 / Long 20+
+Use this priority order:
 
-**Question 3 — Content** (header: "Content"):
-Do you have content ready? Options: All content ready / Rough notes / Topic only
-
-**Question 4 — Density** (header: "Density"):
-How dense should the deck feel? Options:
-
-- "Low density / speaker-led" — Big ideas, fewer words, more visual breathing room
-- "High density / reading-first" — More self-contained detail for async reading
-
-**Do not ask about inline editing during Phase 1.** Users should not have to choose editing behavior before seeing a draft. Inline editing is a post-draft affordance: include it by default unless the user explicitly asks for a locked/export-only file.
-
-Remember the user's density choice. It affects slide count, typography scale, amount of text per slide, layout density, and whether to favor cinematic presenter slides or self-contained reading slides.
-
-If user has content, ask them to share it.
-
-### Step 1.2: Image Evaluation (if images provided)
-
-If user selected "No images" → skip to Phase 2.
-
-If user provides an image folder:
-
-1. **Scan** — List all image files (.png, .jpg, .svg, .webp, etc.)
-2. **Inspect each image** — Use the agent's available image-understanding capability. If image reading is unavailable, use filenames/metadata and ask the user to clarify only when needed
-3. **Evaluate** — For each: what it shows, USABLE or NOT USABLE (with reason), what concept it represents, dominant colors
-4. **Co-design the outline** — Curated images inform slide structure alongside text. This is NOT "plan slides then add images" — design around both from the start (e.g., 3 screenshots → 3 feature slides, 1 logo → title/closing slide)
-5. **Confirm the outline** using the same structured-question mechanism when available: "Does this slide outline and image selection look right?" Options: Looks good / Adjust images / Adjust outline
-
-**Logo in previews:** If a usable logo was identified, embed it (base64) into each style preview in Phase 2 — the user sees their brand styled three different ways.
+1. Explicit user reference or existing brand system
+2. Existing HTML design language
+3. Source material's tone and audience
+4. Best-fit preset from `STYLE_PRESETS.md`
+5. Custom design when no preset fits well
 
 ---
 
-## Phase 2: Style Discovery
+# Phase 4 — Generate the HTML
 
-**This is the "show, don't tell" phase.** Most people can't articulate design preferences in words.
+Before generating, read:
 
-### Step 2.0: Generate 3 Style Previews Directly
+- `responsive-base.css`
+- `html-template.md`
+- `COMPONENTS.md`
+- `animation-patterns.md` only if motion is useful
 
-Based on purpose, audience, mood, and content density, generate 3 distinct single-slide HTML previews showing typography, colors, animation, and overall aesthetic.
+## 4.1 Output architecture
 
-Do not ask the user whether they want options or a preset picker. The default discovery experience is always visual comparison.
+Default to one of two delivery forms:
 
-If the user already gave a vibe, use it. If they did not, infer the likely mood from the occasion, audience, content, and stakes. Keep the options diverse enough that the user can react visually instead of needing to articulate taste up front.
+### Portable single-file HTML
 
-If the user explicitly names a preset or bold template, honor that as one option and generate the remaining preview slots around it.
+Use when:
 
-Read [STYLE_PRESETS.md](STYLE_PRESETS.md) for safe preset candidates. If [bold-template-pack/selection-index.json](bold-template-pack/selection-index.json) exists, read that compact index too, but do not read any `design.md` files yet.
+- The page is small to medium
+- There are few lightweight images
+- Easy sharing matters more than file size
 
-| Mood                | Suggested Presets                                  |
-| ------------------- | -------------------------------------------------- |
-| Impressed/Confident | Bold Signal, Electric Studio, Dark Botanical       |
-| Excited/Energized   | Creative Voltage, Neon Cyber, Split Pastel         |
-| Calm/Focused        | Notebook Tabs, Paper & Ink, Swiss Modern           |
-| Inspired/Moved      | Dark Botanical, Vintage Editorial, Pastel Geometry |
+Inline CSS and JS. Embed small assets only when practical.
 
-**Preview mix rules:**
+### Folder package
 
-- Generate 3 previews by default: 1 safe preset from `STYLE_PRESETS.md`, at least 1 bold template from `bold-template-pack/selection-index.json`, and 1 wildcard.
-- The wildcard may be either a second bold template or a self-generated custom design. Choose whichever creates the strongest, most useful contrast for the user's occasion, audience, mood, and content.
-- Do not force every expressive option to come from the template library. If the brief has a sharper, more specific design opportunity than the available templates, use the wildcard slot to design freely.
-- For conservative or high-stakes decks, make the safe preset especially restrained; choose a calm, higher-formality bold template; make the wildcard either another restrained template or a custom design that feels authoritative rather than decorative.
-- For expressive decks, keep the safe preset as a readable fallback; choose one strong bold template; make the wildcard adventurous, context-specific, and clearly different from both other previews.
-- If bold template matches feel weak, use the wildcard as a custom design or fall back to another safe preset instead of forcing a template.
+Use when:
 
-**Custom wildcard design rules:**
+- There are many screenshots, slide images, or media assets
+- Embedding would create a huge HTML file
+- The user wants a maintainable project
 
-- Follow the Design Aesthetics section above: no generic "AI slop", no default font/color/layout choices, no purple-gradient-on-white clichés, no cookie-cutter dashboard/card look.
-- Match the user's stated occasion, audience, mood/vibe, and content density. The custom design should feel authored for this deck, not merely "stylish."
-- Make a deliberate visual thesis: distinctive typography, a committed palette, a recognizable layout system, and one strong atmospheric or graphic device.
-- Keep it feasible for a full deck. The preview must imply a design system that can expand into section, content, quote, comparison, and closing slides.
-- Use fixed 1920×1080 stage rules and pass the same preview authenticity checks as every other option.
-- Never render "custom", "wildcard", "AI-generated", or design-process labels on the slide itself.
+Recommended structure:
 
-**Bold template selection rules:**
+```text
+output/
+├── index.html
+└── assets/
+    ├── images/
+    ├── slides/
+    └── media/
+```
 
-- Match user purpose and mood against `mood`, `tone`, `best_for`, `avoid_for`, `formality`, `density`, and `scheme`.
-- Treat `best_for` examples as soft signals, not strict industry filters.
-- Keep the three previews genuinely different from each other.
-- After choosing bold template candidate(s), read only those candidate(s)' `preview.md` files from the `preview_md` paths in the selection index.
-- Use `preview.md` only for title-slide previews. Do not read full `design.md` files until the user picks the final template.
-- Do not read or copy `template.html` unless the selected final `design.md` is missing a critical implementation detail.
+Use relative paths so `index.html` opens locally.
 
-**Preview authenticity rules (NON-NEGOTIABLE):**
+Do not introduce npm, bundlers, or a server unless needed.
 
-- Every style preview must look like a real first slide from the user's deck, not a diagnostic card.
-- Never render internal workflow text on a slide: no `preview`, `generated from`, `preview.md`, `template`, `preset`, `style option`, `Option A/B/C`, file names, paths, or source-doc labels.
-- Never render template names or slug names on the slide itself. Template/style names belong only in the message to the user.
-- Never render user requirement notes as slide content, such as "sharp and provocative", "safe option", "bold option", "for internal sharing", or "audience: ...", unless the user explicitly wants that exact phrase to appear in the deck.
-- If the slide needs chrome, use real deck chrome only: the deck title, section title, date, author, company, page number, or a genuine content phrase from the user's material.
-- Before opening previews, inspect the visible text and revise if any internal metadata appears.
+## 4.2 Semantic HTML
 
-Save previews to `.frontend-slides/slide-previews/` (style-a.html, style-b.html, style-c.html). Each should be self-contained and compact, showing one animated title slide.
+Prefer semantic elements such as:
 
-Open each preview automatically for the user.
+- `header`
+- `nav`
+- `main`
+- `section`
+- `article`
+- `figure` / `figcaption`
+- `aside`
+- `footer`
 
-### Step 2.1: User Picks
+Use meaningful IDs for chapter anchors.
 
-Ask (header: "Style"):
-Which style preview do you prefer? Options: Style A: [Name] / Style B: [Name] / Style C: [Name] / Mix elements
+## 4.3 Navigation
 
-If "Mix elements", ask for specifics.
+For long pages:
 
----
+- Provide a table of contents when it improves scanning.
+- Use anchor links to real section IDs.
+- Highlight the current section when feasible.
+- Ensure sticky navigation does not cover headings after anchor jumps.
+- On mobile, navigation must remain compact and usable.
 
-## Phase 3: Generate Presentation
+## 4.4 Content components
 
-Generate the full presentation using content from Phase 1 (text, or text + curated images) and style from Phase 2.
+Choose components from `COMPONENTS.md` based on information need, not decoration.
 
-If images were provided, the slide outline already incorporates them from Step 1.2. If not, CSS-generated visuals (gradients, shapes, patterns) provide visual interest — this is a fully supported first-class path.
+Examples:
 
-Apply the user's density choice throughout the deck:
+- Summary strip
+- Chapter header
+- Media + text pair
+- Transcript segment + slide
+- Step sequence
+- Quote block
+- Evidence callout
+- Comparison table
+- Timeline
+- Source links
+- Expandable secondary detail
 
-- **Low density / speaker-led:** Use more slides with fewer ideas per slide. Favor large headings, short phrases, visual metaphors, section beats, quote/statement slides, and presenter-friendly pacing.
-- **High density / reading-first:** Make slides more self-contained. Use structured grids, comparison tables, annotated diagrams, captions, and concise explanatory copy. Keep hierarchy strong so it feels designed, not like a document pasted onto slides.
+Avoid using cards for every paragraph.
 
-If the user's stated needs are mixed, choose the closer of the two modes instead of inventing a middle option: live audience persuasion defaults low-density; async circulation or detailed review defaults high-density.
+## 4.5 Links
 
-Never let high density become visual clutter. If a high-density slide starts to overflow, split it or redesign it into a clearer structure.
+- Preserve useful links supplied in the source.
+- Use descriptive link text.
+- Do not invent URLs.
+- External links may open in a new tab when appropriate; if using `target="_blank"`, include `rel="noopener noreferrer"`.
+- For local files, use valid relative paths.
 
-If the user selected a bold template from `bold-template-pack`, read that one template's full `design.md` before generating. Do not read the other bold templates. Treat `design.md` as the design recipe:
+## 4.6 Images
 
-- Preserve its fonts, palette, decorative vocabulary, spacing rhythm, and component grammar.
-- Generate the final deck as a fixed 1920×1080 stage scaled uniformly to the viewport, regardless of whether the source template originally used `deck-stage.js` or viewport-fluid CSS.
-- Treat viewport-fluid values in `design.md` as design proportions to translate into 1920×1080 stage coordinates. Do not keep them as live viewport reflow rules in the final deck.
-- Keep the output as a single self-contained Frontend Slides HTML file.
-- Do not copy demo slide content or mimic the source template too literally.
-- Use `template.html` only as a last-resort implementation reference for the selected template.
-- After generating, verify both content overflow and panel overlap in rendered browser screenshots. `scrollHeight` checks alone are not enough because grid panels can visually cover each other.
+- Preserve aspect ratio.
+- Add useful alt text when the image meaning can be determined.
+- Use captions when provenance or explanation matters.
+- Do not place text over busy images unless contrast is guaranteed.
+- Do not make source screenshots decorative backgrounds if readers need to inspect them.
 
-If the user selected a self-generated custom wildcard, treat that preview's CSS and layout as the design recipe:
+## 4.7 Tables and code
 
-- Preserve its fonts, palette, decorative vocabulary, spacing rhythm, grid logic, and component grammar.
-- Expand the same visual system across the full deck. Do not switch to a preset or bold template after the user has chosen the custom direction.
-- Design any missing slide layouts from that system rather than importing patterns from another style.
-- Keep the output fixed-stage, single-file, and visually verified like every other deck.
+- Wrap wide tables in controlled horizontal scroll containers.
+- Keep headers visible when useful for long tables.
+- Do not shrink text excessively.
+- Preserve code whitespace and provide copy affordances when useful.
 
-**Before generating, read these supporting files:**
+## 4.8 Multilingual content
 
-- [html-template.md](html-template.md) — HTML architecture and JS features
-- [viewport-base.css](viewport-base.css) — Mandatory CSS (include in full)
-- [animation-patterns.md](animation-patterns.md) — Animation reference for the chosen feeling
-
-**Key requirements:**
-
-- Single self-contained HTML file, all CSS/JS inline
-- Include the FULL contents of viewport-base.css in the `<style>` block
-- Use fonts from Fontshare or Google Fonts — never system fonts
-- Add detailed comments explaining each section
-- Every section needs a clear `/* === SECTION NAME === */` comment block
-
----
-
-## Phase 4: PPT Conversion
-
-When converting PowerPoint files:
-
-1. **Extract content** — Run `python scripts/extract-pptx.py <input.pptx> <output_dir>` (install python-pptx if needed: `pip install python-pptx`)
-2. **Confirm with user** — Present extracted slide titles, content summaries, and image counts
-3. **Style selection** — Proceed to Phase 2 for style discovery
-4. **Generate HTML** — Convert to chosen style, preserving all text, images (from assets/), slide order, and speaker notes (as HTML comments)
+- Set the document `lang` appropriately.
+- Preserve Unicode text.
+- Use font stacks that support the language.
+- For mixed Chinese/English pages, avoid layout assumptions based only on Latin word length.
+- Preserve proper nouns and source terminology unless the user requests translation.
 
 ---
 
-## Phase 5: Delivery
+# Phase 5 — QA and Validation
 
-1. **Clean up** — Delete `.frontend-slides/slide-previews/` if it exists
-2. **Open** — Use `open [filename].html` to launch in browser
-3. **Summarize** — Tell the user:
-   - File location, style name, slide count
-   - Navigation: Arrow keys, Space, swipe/tap if enabled
-   - How to customize: `:root` CSS variables for colors, font link for typography, `.reveal` class for animations
-   - Inline text editing is available: Hover top-left corner or press E to enter edit mode, click any text to edit, Ctrl+S to save
-   - Offer the natural post-draft actions: ask for revisions, edit text directly in the browser, or export/share
+Read `QA_CHECKLIST.md`.
 
----
+QA is not optional.
 
-## Phase 6: Share & Export (Optional)
+## 5.1 Static checks
 
-After delivery, **ask the user:** _"Would you like to share this presentation? I can deploy it to a live URL (works on any device including phones) or export it as a PDF."_
+Check:
 
-Options:
+- Valid document structure
+- `<title>` exists
+- viewport meta exists
+- `lang` exists
+- No duplicate IDs
+- No empty anchor targets
+- Local asset paths resolve
+- Images have appropriate alt text where possible
+- No unsupported source claims were introduced
 
-- **Deploy to URL** — Shareable link that works on any device
-- **Export to PDF** — Universal file for email, Slack, print
-- **Both**
-- **No thanks**
+If available, run `scripts/validate_html.py` against the final file.
 
-If the user declines, stop here. If they choose one or both, proceed below.
+## 5.2 Visual checks
 
-### 6A: Deploy to a Live URL (Vercel)
+When browser rendering is available, inspect at minimum:
 
-This deploys the presentation to Vercel — a free hosting platform. The link works on any device (phones, tablets, laptops) and stays live until the user takes it down.
+- Desktop around 1440 px wide
+- Tablet around 768–1024 px wide
+- Mobile around 375–430 px wide
 
-**If the user has never deployed before, guide them step by step:**
+Look for:
 
-1. **Check if Vercel CLI is installed** — Run `npx vercel --version`. If not found, install Node.js first (`brew install node` on macOS, or download from https://nodejs.org).
+- Horizontal overflow
+- Text clipping
+- Overlapping sticky elements
+- Tiny screenshots
+- Distorted images
+- Broken media
+- Unreadable tables
+- Broken navigation
+- Excessive empty space
+- Visually repetitive sections
 
-2. **Check if user is logged in** — Run `npx vercel whoami`.
-   - If NOT logged in, explain: _"Vercel is a free hosting service. You need an account to deploy. Let me walk you through it:"_
-     - Step 1: Ask user to go to https://vercel.com/signup in their browser
-     - Step 2: They can sign up with GitHub, Google, email — whatever is easiest
-     - Step 3: Once signed up, run `vercel login` and follow the prompts (it opens a browser window to authorize)
-     - Step 4: Confirm login with `vercel whoami`
-   - Wait for the user to confirm they're logged in before proceeding.
+## 5.3 Content completeness check
 
-3. **Deploy** — Run the deploy script:
+Compare the output against the source inventory:
 
-   ```bash
-   bash scripts/deploy.sh <path-to-presentation>
-   ```
+- Were all major source sections represented?
+- Were important visuals used or intentionally excluded for a clear reason?
+- Were links preserved?
+- Were transcript sections accidentally dropped?
+- Were tables or facts altered?
 
-   The script accepts either a folder (with index.html) or a single HTML file.
-
-4. **Share the URL** — Tell the user:
-   - The live URL (from the script output)
-   - That it works on any device — they can text it, Slack it, email it
-   - To take it down later: visit https://vercel.com/dashboard and delete the project
-   - The Vercel free tier is generous — they won't be charged
-
-**⚠ Deployment gotchas:**
-
-- **Local images/videos must travel with the HTML.** The deploy script auto-detects files referenced via `src="..."` in the HTML and bundles them. But if the presentation references files via CSS `background-image` or unusual paths, those may be missed. **Before deploying, verify:** open the deployed URL and check that all images load. If any are broken, the safest fix is to put the HTML and all its assets into a single folder and deploy the folder instead of a standalone HTML file.
-- **Prefer folder deployments when the presentation has many assets.** If the presentation lives in a folder with images alongside it (e.g., `my-deck/index.html` + `my-deck/logo.png`), deploy the folder directly: `bash scripts/deploy.sh ./my-deck/`. This is more reliable than deploying a single HTML file because the entire folder contents are uploaded as-is.
-- **Filenames with spaces work but can cause issues.** The script handles spaces in filenames, but Vercel URLs encode spaces as `%20`. If possible, avoid spaces in image filenames. If the user's images have spaces, the script handles it — but if images still break, renaming files to use hyphens instead of spaces is the fix.
-- **Redeploying updates the same URL.** Running the deploy script again on the same presentation overwrites the previous deployment. The URL stays the same — no need to share a new link.
-
-### 6B: Export to PDF
-
-This captures each slide as a screenshot and combines them into a PDF. Perfect for email attachments, embedding in documents, or printing.
-
-**Note:** Animations and interactivity are not preserved — the PDF is a static snapshot. This is normal and expected; mention it to the user so they're not surprised.
-
-1. **Run the export script:**
-
-   ```bash
-   bash scripts/export-pdf.sh <path-to-html> [output.pdf]
-   ```
-
-   If no output path is given, the PDF is saved next to the HTML file.
-
-2. **What happens behind the scenes** (explain briefly to the user):
-   - A headless browser opens the presentation at 1920×1080 (standard widescreen)
-   - It screenshots each slide one by one
-   - All screenshots are combined into a single PDF
-   - The script needs Playwright (a browser automation tool) — it will install automatically if missing
-
-3. **If Playwright installation fails:**
-   - The most common issue is Chromium not downloading. Run: `npx playwright install chromium`
-   - If that fails too, it may be a network/firewall issue. Ask the user to try on a different network.
-
-4. **Deliver the PDF** — The script auto-opens it. Tell the user:
-   - The file location and size
-   - That it works everywhere — email, Slack, Notion, Google Docs, print
-   - Animations are replaced by their final visual state (still looks great, just static)
-
-**⚠ PDF export gotchas:**
-
-- **First run is slow.** The script installs Playwright and downloads a Chromium browser (~150MB) into a temp directory. This happens once per run. Warn the user it may take 30-60 seconds the first time — subsequent exports within the same session are faster.
-- **Slides must use `class="slide"`.** The export script finds slides by querying `.slide` elements. If the presentation uses a different class name, the script will report "0 slides found" and fail. All presentations generated by this skill use `.slide`, so this only matters for externally-created HTML.
-- **Local images must be loadable via HTTP.** The script starts a local server and loads the HTML through it (so Google Fonts and relative image paths work). If images use absolute filesystem paths (e.g., `src="/Users/name/photo.png"`) instead of relative paths (e.g., `src="photo.png"`), they won't load. Generated presentations always use relative paths, but converted or user-provided decks might not — check and fix if needed.
-- **Local images appear in the PDF** as long as they are in the same directory as (or relative to) the HTML file. The export script serves the HTML's parent directory over HTTP, so relative paths like `src="photo.png"` resolve correctly — including filenames with spaces. If images still don't appear, check: (1) the image files actually exist at the referenced path, (2) the paths are relative, not absolute filesystem paths like `/Users/name/photo.png`.
-- **Large presentations produce large PDFs.** Each slide is captured as a full 1920×1080 PNG screenshot. An 18-slide deck can produce a ~20MB PDF. If the PDF exceeds 10MB, ask the user: _"The PDF is [size]. Would you like me to compress it? It'll look slightly less sharp but the file will be much smaller."_ If yes, re-run the export with the `--compact` flag:
-  ```bash
-  bash scripts/export-pdf.sh <path-to-html> [output.pdf] --compact
-  ```
-  This renders at 1280×720 instead of 1920×1080, typically cutting file size by 50-70% with minimal visual difference.
+If uncertain, prefer a clearly marked `Need Manual Check` note over invention.
 
 ---
 
-## Supporting Files
+# Phase 6 — Delivery
 
-| File                                               | Purpose                                                              | When to Read              |
-| -------------------------------------------------- | -------------------------------------------------------------------- | ------------------------- |
-| [STYLE_PRESETS.md](STYLE_PRESETS.md)               | 12 curated visual presets with colors, fonts, and signature elements | Phase 2 (style selection) |
-| [bold-template-pack/selection-index.json](bold-template-pack/selection-index.json) | Compact bold template metadata for candidate selection | Phase 2 (style selection) |
-| [bold-template-pack/templates/*/preview.md](bold-template-pack/templates/) | Lightweight style cards for shortlisted bold title previews | Phase 2 after shortlisting |
-| [bold-template-pack/templates/*/design.md](bold-template-pack/templates/) | Detailed design-system docs for the selected bold template only | Phase 3 after user selection |
-| [viewport-base.css](viewport-base.css)             | Mandatory fixed-stage CSS — copy into every presentation             | Phase 3 (generation)      |
-| [html-template.md](html-template.md)               | HTML structure, JS features, code quality standards                  | Phase 3 (generation)      |
-| [animation-patterns.md](animation-patterns.md)     | CSS/JS animation snippets and effect-to-feeling guide                | Phase 3 (generation)      |
-| [scripts/extract-pptx.py](scripts/extract-pptx.py) | Python script for PPT content extraction                             | Phase 4 (conversion)      |
-| [scripts/deploy.sh](scripts/deploy.sh)             | Deploy slides to Vercel for instant sharing                          | Phase 6 (sharing)         |
-| [scripts/export-pdf.sh](scripts/export-pdf.sh)     | Export slides to PDF                                                 | Phase 6 (sharing)         |
+Deliver the finished HTML, not merely a plan.
+
+Briefly report:
+
+- Output file or folder
+- Primary task mode used
+- Any important assumptions
+- Any `Need Manual Check` items
+- QA status
+
+Do not overwhelm the user with internal implementation details unless asked.
+
+If the user requested a local file, ensure the delivered package can be opened locally without a development server unless the requested functionality makes that impossible.
+
+---
+
+# Modification Rules for Existing HTML
+
+When editing an existing page:
+
+- Change only what is necessary to satisfy the request.
+- Preserve working interactions and source data.
+- Avoid full rewrites when a focused modification is safer.
+- If a redesign is requested, preserve content and functionality first, then change the visual system.
+- Before removing CSS or JS, verify that it is not used elsewhere.
+- After every structural change, repeat responsive and interaction checks.
+
+---
+
+# Quality Standard
+
+A successful HTML Content Board should be:
+
+- **Faithful** — source meaning and evidence are preserved
+- **Readable** — comfortable on desktop and mobile
+- **Visual** — images and media are integrated with purpose
+- **Structured** — chapters, navigation, and hierarchy are obvious
+- **Useful** — readers can learn, review, or act without returning constantly to the raw files
+- **Portable** — opens locally when that is the user's goal
+- **Maintainable** — structure and naming remain understandable for future edits
+- **Verified** — the page has been checked, not merely generated
